@@ -1,19 +1,18 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
-import { getModels, saveModel, getModel } from "./../services/modelService";
+import { saveModel, getModel } from "./../services/modelService";
 
 class ModelsForm extends Form {
   state = {
     data: {
-      _id: "",
       name: "",
       modelWear: "",
-      height: null,
-      bust: null,
-      waist: null,
-      lowHip: null,
-      highHip: null,
+      height: "",
+      bust: "",
+      waist: "",
+      lowHip: "",
+      highHip: "",
     },
     errors: {},
   };
@@ -22,11 +21,11 @@ class ModelsForm extends Form {
     _id: Joi.string(),
     name: Joi.string().required().label("Name"),
     modelWear: Joi.string().required().label("Model Wear"),
-    height: Joi.number().required().label("Height"),
-    bust: Joi.number().required().label("Bust"),
-    waist: Joi.number().required().label("Waist"),
-    lowHip: Joi.number().required().label("Low Hip"),
-    highHip: Joi.number().required().label("High Hip"),
+    height: Joi.number().required().min(1).label("Height"),
+    bust: Joi.number().required().min(1).label("Bust"),
+    waist: Joi.number().required().min(1).label("Waist"),
+    lowHip: Joi.number().required().min(1).label("Low Hip"),
+    highHip: Joi.number().required().min(1).label("High Hip"),
   };
 
   async populateModel() {
@@ -36,7 +35,6 @@ class ModelsForm extends Form {
       else {
         const { data: model } = await getModel(modelId);
         this.setState({ data: this.mapToViewModel(model) });
-        console.log(this.state.data);
       }
     } catch (ex) {
       if (ex.response && ex.response.status === 404)
@@ -77,7 +75,6 @@ class ModelsForm extends Form {
           {this.renderInput("waist", "Waist")}
           {this.renderInput("lowHip", "Low Hip")}
           {this.renderInput("highHip", "High Hip")}
-
           {this.renderButton("Save")}
         </form>
       </div>

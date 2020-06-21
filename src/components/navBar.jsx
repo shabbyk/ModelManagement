@@ -1,7 +1,5 @@
 import React from "react";
-import Models from "./models";
-import { Link, NavLink } from "react-router-dom";
-import SearchBox from "./common/searchBox";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (

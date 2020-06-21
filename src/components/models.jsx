@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {
-  getModels,
-  getModel,
-  getSearchedModel,
-} from "./../services/modelService";
+import { getModels } from "./../services/modelService";
 import { paginate } from "./../utils/paginate";
 import SearchBox from "./common/searchBox";
 import Pagination from "./common/pagination";
@@ -12,7 +8,7 @@ class Models extends Component {
   state = {
     models: [],
     currentPage: 1,
-    pageSize: 4,
+    pageSize: 8,
     searchQuery: "",
   };
 
@@ -46,6 +42,8 @@ class Models extends Component {
     let filtered = allModels;
 
     if (searchQuery)
+      //For few columns implemented checking value in all columns else a column needs to stored in
+      //mongodb with all values from all columns and the query string to be checked as substring with that column
       filtered = allModels.filter(
         (m) =>
           m.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
