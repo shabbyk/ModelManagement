@@ -67,13 +67,13 @@ class Models extends Component {
     const models = paginate(filtered, currentPage, pageSize);
     return (
       <div className="col mt-6">
-        <div className="row mb-2 col-md-2">
-          <Link to="/models/new" className="btn btn-primary">
-            Add New Model
-          </Link>
-        </div>
-        <div className="row col-md-3">
-          <SearchBox value={searchQuery} onChange={this.handleSearch} />
+        <div className="row mb-2 col">
+          <div className="row col-md-11">
+            <Link to="/models/new" className="btn btn-primary col-md-2">
+              Add New Model
+            </Link>
+            <SearchBox value={searchQuery} onChange={this.handleSearch} />
+          </div>
         </div>
 
         <div className="row row-cols-3 col-md-12 mt-2">
@@ -83,7 +83,7 @@ class Models extends Component {
                 <div className="col-md-3">
                   <div className="row">
                     <img
-                      src="https://via.placeholder.com/200"
+                      src="https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg"
                       className="card-img"
                       alt="..."
                     />

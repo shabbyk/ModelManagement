@@ -10,9 +10,28 @@ body {
 
 .navbar {
   margin-bottom: 20px;
+  background-color: #563d7c !important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.marginAuto {
+  margin: auto;
+}
+.card-raised {
+  box-shadow: 0 0 8px grey;
+  z-index: 2;
+}
+
+.saveBtn {
+  margin-bottom: 2%;
+  margin-left: 41%;
+  width: 24%;
+}
+
+.form-group {
+  margin-bottom: 7px;
 }

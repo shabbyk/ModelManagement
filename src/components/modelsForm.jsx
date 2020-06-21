@@ -65,19 +65,21 @@ class ModelsForm extends Form {
   };
   render() {
     return (
-      <div className="col-md-6">
-        <h1>Model Form</h1>
-        <form className="form-group" onSubmit={this.handleSubmit}>
-          {this.renderInput("name", "Name")}
-          {this.renderInput("modelWear", "Model Wear")}
-          {this.renderInput("height", "Height")}
-          {this.renderInput("bust", "Bust")}
-          {this.renderInput("waist", "Waist")}
-          {this.renderInput("lowHip", "Low Hip")}
-          {this.renderInput("highHip", "High Hip")}
-          {this.renderButton("Save")}
-        </form>
-      </div>
+      <React.Fragment>
+        <h4 className="text-center text-secondary">Model Details</h4>
+        <div className="col-md-4 card-raised marginAuto">
+          <form className="form-group" onSubmit={this.handleSubmit}>
+            {this.renderInput("name", "Name")}
+            {this.renderInput("modelWear", "Model Wear")}
+            {this.renderInput("height", "Height")}
+            {this.renderInput("bust", "Bust")}
+            {this.renderInput("waist", "Waist")}
+            {this.renderInput("lowHip", "Low Hip")}
+            {this.renderInput("highHip", "High Hip")}
+            {this.renderButton("Save")}
+          </form>
+        </div>
+      </React.Fragment>
     );
   }
 }
