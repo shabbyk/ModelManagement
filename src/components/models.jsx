@@ -88,8 +88,10 @@ class Models extends Component {
                       alt="..."
                     />
                   </div>
-                  <div className="row">
-                    <Link to={`/models/${model._id}`}>{model.name}</Link>
+                  <div className="row ml-2 my-2">
+                    <Link to={`/models/${model._id}`}>
+                      {model.name} <i className="fa fa-edit"></i>
+                    </Link>
                   </div>
                 </div>
                 <div className="col-md-9">
