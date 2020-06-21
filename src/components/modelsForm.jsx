@@ -13,7 +13,7 @@ class ModelsForm extends Form {
       waist: "",
       lowHip: "",
       highHip: "",
-      files: FileList
+      files: []
     },
     errors: {},
   };
