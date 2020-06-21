@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import Joi from "joi-browser";
 import Input from "./input";
+import InputFile from "./inputFile";
 
 //#endregion imports
 
@@ -54,6 +55,19 @@ class Form extends Component {
     this.setState({ data, errors });
   };
 
+  handleFileChange = ({ currentTarget : input}) => {
+    const errors = { ...this.state.errors };
+    const errorMessage = false; //this.validateProperty({ name: input.name, value: input.files});
+    if (errorMessage) errors[input.name] = errorMessage;
+    else delete errors[input.name];
+
+    this.setState({ errors: errors || {} });
+    if (errors.length) return;
+    const data = { ...this.state.data };
+    data[input.name] = input.files;
+    this.setState({ data, errors });
+  }
+
   renderInput(name, label, type = "text") {
     const { data, errors } = this.state;
     return (
@@ -63,6 +77,18 @@ class Form extends Component {
         label={label}
         type={type}
         onChange={this.handleChange}
+        error={errors[name]}
+      />
+    );
+  }
+
+  renderFileInput(name, label) {
+    const { data, errors } = this.state;
+    return (
+      <InputFile
+        name={name}
+        label={label}
+        onChange={this.handleFileChange}
         error={errors[name]}
       />
     );

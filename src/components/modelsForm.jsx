@@ -13,6 +13,7 @@ class ModelsForm extends Form {
       waist: "",
       lowHip: "",
       highHip: "",
+      files: FileList
     },
     errors: {},
   };
@@ -26,6 +27,7 @@ class ModelsForm extends Form {
     waist: Joi.number().required().min(1).label("Waist"),
     lowHip: Joi.number().required().min(1).label("Low Hip"),
     highHip: Joi.number().required().min(1).label("High Hip"),
+    files: Joi.any()
   };
 
   async populateModel() {
@@ -56,6 +58,7 @@ class ModelsForm extends Form {
       waist: model.waist,
       lowHip: model.lowHip,
       highHip: model.highHip,
+      files: model.files
     };
   }
 
@@ -76,6 +79,7 @@ class ModelsForm extends Form {
             {this.renderInput("waist", "Waist")}
             {this.renderInput("lowHip", "Low Hip")}
             {this.renderInput("highHip", "High Hip")}
+            {this.renderFileInput("files", "Upload Files")}
             {this.renderButton("Save")}
           </form>
         </div>
